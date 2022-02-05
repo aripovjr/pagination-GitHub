@@ -37,7 +37,6 @@ h1::after{
     margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .card{
@@ -62,7 +61,7 @@ img{
     background-color: #fff;
     border: 3px solid rgb(77, 163, 243);
     padding: 5px;
-    transition: 0.5s;
+    transition: 0.8s;
 }
 .card:hover img{
     padding: 0;
