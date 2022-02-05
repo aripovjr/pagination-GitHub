@@ -4,14 +4,14 @@ import paginate from './paginate.js'
 import displayButtons from './displayButtons.js'
 
 const title = document.querySelector('h1')
-const btnContainer = document.querySelector('.btn-container')
+const btnContainer = document.querySelector('.page-container')
 
-let idx = 0
+let index = 0
 let pages = []
 
 const setupUI = () => {
-    displayFollowers(pages[idx])
-    displayButtons(btnContainer, pages, idx)
+    displayFollowers(pages[index])
+    displayButtons(btnContainer, pages, index)
 }
 
 const init = async() => {
@@ -20,5 +20,25 @@ title.textContent = 'Pagination'
 pages = paginate(followers)
 setupUI()
 }
+
+btnContainer.addEventListener('click', function(e){
+    if(e.target.classList.contains('btn-container')) return
+    if(e.target. classList.contains('page-btn')){
+        index = parseInt(e.target.dataset.index)
+    }
+    if(e.target.classList.contains('next-btn')){
+        index++
+        if(index>pages.length-1){
+            index=0
+        }
+    }
+    if(e.target.classList.contains('prev-btn')){
+        index--
+        if(index<0){
+            index=pages.length-1
+        }
+    }
+    setupUI()
+})
 
 window.addEventListener('load', init)
